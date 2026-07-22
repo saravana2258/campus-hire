@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Campus Placement & Recruitment Portal - Manage student profiles, company listings, and job applications all in one place.">
+  <title>CampusHire — Placement & Recruitment Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Glows -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">CH</div>
+      <div class="logo-text">Campus<span>Hire</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="dashboard" id="nav-dashboard">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item" data-page="students" id="nav-students">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        Students
+      </a>
+      <a href="#" class="nav-item" data-page="companies" id="nav-companies">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+        Companies
+      </a>
+      <a href="#" class="nav-item" data-page="applications" id="nav-applications">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        Applications
+      </a>
+      <a href="#" class="nav-item" data-page="placements" id="nav-placements">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        Placements
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="admin-badge">
+        <div class="admin-avatar">SR</div>
+        <div class="admin-info">
+          <span class="admin-name">Saravanakumar R</span>
+          <span class="admin-role">Admin</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="mobile-title">CampusHire</span>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ============================== -->
+    <!-- DASHBOARD PAGE -->
+    <!-- ============================== -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Dashboard</h1>
+          <p class="page-subtitle">Welcome back! Here's your placement overview.</p>
+        </div>
+        <div class="date-badge" id="currentDate"></div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card glass-card">
+          <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+          <div class="stat-info">
+            <span class="stat-number" id="stat-students">0</span>
+            <span class="stat-label">Total Students</span>
+          </div>
+          <div class="stat-trend up">+12%</div>
+        </div>
+        <div class="stat-card glass-card">
+          <div class="stat-icon purple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg></div>
+          <div class="stat-info">
+            <span class="stat-number" id="stat-companies">0</span>
+            <span class="stat-label">Companies</span>
+          </div>
+          <div class="stat-trend up">+5%</div>
+        </div>
+        <div class="stat-card glass-card">
+          <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-2 16l-4-4 1.41-1.41L12 15.17l6.59-6.59L20 10l-8 8z"/></svg></div>
+          <div class="stat-info">
+            <span class="stat-number" id="stat-applications">0</span>
+            <span class="stat-label">Applications</span>
+          </div>
+          <div class="stat-trend up">+23%</div>
+        </div>
+        <div class="stat-card glass-card">
+          <div class="stat-icon cyan"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+          <div class="stat-info">
+            <span class="stat-number" id="stat-placed">0</span>
+            <span class="stat-label">Students Placed</span>
+          </div>
+          <div class="stat-trend up">+18%</div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="dashboard-grid">
+        <div class="glass-card">
+          <h3 class="card-heading">Recent Applications</h3>
+          <div class="recent-list" id="recentApplications">
+            <div class="empty-state">No applications yet. Add students and companies first.</div>
+          </div>
+        </div>
+        <div class="glass-card">
+          <h3 class="card-heading">Top Companies Visiting</h3>
+          <div class="company-list-dash" id="topCompanies">
+            <div class="empty-state">No companies added yet.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- STUDENTS PAGE -->
+    <!-- ============================== -->
+    <div class="page" id="page-students">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Students</h1>
+          <p class="page-subtitle">Manage all registered students and their profiles.</p>
+        </div>
+        <button class="btn btn-primary" id="addStudentBtn">+ Add Student</button>
+      </div>
+
+      <!-- Search & Filter -->
+      <div class="filter-bar glass-card">
+        <input type="text" class="search-input" id="studentSearch" placeholder="🔍 Search by name, department, or CGPA...">
+        <select class="filter-select" id="cgpaFilter">
+          <option value="">All CGPAs</option>
+          <option value="8">8.0+ (High)</option>
+          <option value="7">7.0+ (Good)</option>
+          <option value="6">6.0+ (Average)</option>
+        </select>
+        <select class="filter-select" id="statusFilter">
+          <option value="">All Statuses</option>
+          <option value="Available">Available</option>
+          <option value="Applied">Applied</option>
+          <option value="Placed">Placed</option>
+        </select>
+      </div>
+
+      <div class="students-grid" id="studentsGrid">
+        <div class="empty-state-full">No students added yet. Click "+ Add Student" to begin.</div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- COMPANIES PAGE -->
+    <!-- ============================== -->
+    <div class="page" id="page-companies">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Companies</h1>
+          <p class="page-subtitle">Track companies visiting campus for recruitment.</p>
+        </div>
+        <button class="btn btn-primary" id="addCompanyBtn">+ Add Company</button>
+      </div>
+
+      <div class="companies-grid" id="companiesGrid">
+        <div class="empty-state-full">No companies added yet. Click "+ Add Company" to begin.</div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- APPLICATIONS PAGE -->
+    <!-- ============================== -->
+    <div class="page" id="page-applications">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Applications</h1>
+          <p class="page-subtitle">Track job applications across all companies.</p>
+        </div>
+        <button class="btn btn-primary" id="addApplicationBtn">+ New Application</button>
+      </div>
+
+      <!-- Kanban Board -->
+      <div class="kanban-board" id="kanbanBoard">
+        <div class="kanban-col" id="col-applied" data-status="Applied">
+          <div class="kanban-col-header blue">
+            <span>Applied</span>
+            <span class="kanban-count" id="count-applied">0</span>
+          </div>
+          <div class="kanban-cards" id="cards-applied" ondragover="event.preventDefault()" ondrop="handleDrop(event, 'Applied')"></div>
+        </div>
+        <div class="kanban-col" id="col-interview" data-status="Interview">
+          <div class="kanban-col-header purple">
+            <span>Interview</span>
+            <span class="kanban-count" id="count-interview">0</span>
+          </div>
+          <div class="kanban-cards" id="cards-interview" ondragover="event.preventDefault()" ondrop="handleDrop(event, 'Interview')"></div>
+        </div>
+        <div class="kanban-col" id="col-offer" data-status="Offer">
+          <div class="kanban-col-header green">
+            <span>Offer Received</span>
+            <span class="kanban-count" id="count-offer">0</span>
+          </div>
+          <div class="kanban-cards" id="cards-offer" ondragover="event.preventDefault()" ondrop="handleDrop(event, 'Offer')"></div>
+        </div>
+        <div class="kanban-col" id="col-rejected" data-status="Rejected">
+          <div class="kanban-col-header red">
+            <span>Rejected</span>
+            <span class="kanban-count" id="count-rejected">0</span>
+          </div>
+          <div class="kanban-cards" id="cards-rejected" ondragover="event.preventDefault()" ondrop="handleDrop(event, 'Rejected')"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- PLACEMENTS PAGE -->
+    <!-- ============================== -->
+    <div class="page" id="page-placements">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Placements</h1>
+          <p class="page-subtitle">View all successfully placed students.</p>
+        </div>
+      </div>
+      <div class="placements-list" id="placementsList">
+        <div class="empty-state-full">No placements yet. Move applications to "Offer Received" to track placed students.</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================== -->
+  <!-- MODALS -->
+  <!-- ============================== -->
+
+  <!-- Add Student Modal -->
+  <div class="modal-overlay" id="studentModal">
+    <div class="modal glass-card">
+      <div class="modal-header">
+        <h3 id="studentModalTitle">Add New Student</h3>
+        <button class="modal-close" onclick="closeModal('studentModal')">✕</button>
+      </div>
+      <form id="studentForm">
+        <input type="hidden" id="studentId">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="studentName" required placeholder="e.g. Saravanakumar R">
+          </div>
+          <div class="form-group">
+            <label>Department *</label>
+            <select id="studentDept" required>
+              <option value="">Select Department</option>
+              <option>Computer Science</option>
+              <option>Information Technology</option>
+              <option>Electronics</option>
+              <option>Mechanical</option>
+              <option>Civil</option>
+              <option>Electrical</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>CGPA *</label>
+            <input type="number" id="studentCgpa" min="0" max="10" step="0.1" required placeholder="e.g. 7.6">
+          </div>
+          <div class="form-group">
+            <label>Backlogs</label>
+            <input type="number" id="studentBacklogs" min="0" value="0" placeholder="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" id="studentEmail" required placeholder="student@email.com">
+        </div>
+        <div class="form-group">
+          <label>Skills (comma separated)</label>
+          <input type="text" id="studentSkills" placeholder="Java, SQL, Spring Boot, HTML">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="studentStatus">
+            <option value="Available">Available</option>
+            <option value="Applied">Applied</option>
+            <option value="Placed">Placed</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('studentModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Company Modal -->
+  <div class="modal-overlay" id="companyModal">
+    <div class="modal glass-card">
+      <div class="modal-header">
+        <h3 id="companyModalTitle">Add New Company</h3>
+        <button class="modal-close" onclick="closeModal('companyModal')">✕</button>
+      </div>
+      <form id="companyForm">
+        <input type="hidden" id="companyId">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Company Name *</label>
+            <input type="text" id="companyName" required placeholder="e.g. Infosys">
+          </div>
+          <div class="form-group">
+            <label>Industry *</label>
+            <select id="companyIndustry" required>
+              <option value="">Select Industry</option>
+              <option>IT Services</option>
+              <option>Product Based</option>
+              <option>Banking & Finance</option>
+              <option>Consulting</option>
+              <option>E-Commerce</option>
+              <option>Healthcare</option>
+              <option>Manufacturing</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Package (LPA) *</label>
+            <input type="number" id="companyPackage" required placeholder="e.g. 6.5">
+          </div>
+          <div class="form-group">
+            <label>Visit Date</label>
+            <input type="date" id="companyDate">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>CGPA Cutoff</label>
+          <input type="number" id="companyCutoff" min="0" max="10" step="0.1" placeholder="e.g. 7.0">
+        </div>
+        <div class="form-group">
+          <label>Roles Offered</label>
+          <input type="text" id="companyRoles" placeholder="Software Engineer, Analyst, Developer">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('companyModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Company</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Application Modal -->
+  <div class="modal-overlay" id="applicationModal">
+    <div class="modal glass-card">
+      <div class="modal-header">
+        <h3>New Application</h3>
+        <button class="modal-close" onclick="closeModal('applicationModal')">✕</button>
+      </div>
+      <form id="applicationForm">
+        <div class="form-group">
+          <label>Select Student *</label>
+          <select id="appStudent" required>
+            <option value="">Choose Student</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Select Company *</label>
+          <select id="appCompany" required>
+            <option value="">Choose Company</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Role Applied For</label>
+          <input type="text" id="appRole" placeholder="Software Engineer">
+        </div>
+        <div class="form-group">
+          <label>Application Date</label>
+          <input type="date" id="appDate">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('applicationModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
