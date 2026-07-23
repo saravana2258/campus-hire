@@ -2,7 +2,7 @@
 // CAMPUS PORTAL — Frontend JavaScript
 // Connects to Spring Boot REST API (port 8080)
 // ============================================
-const API_BASE_URL = "https://campus-hire-ags7.onrender.com/api";
+const API = "https://campus-hire-ags7.onrender.com/api";
 
 // ============================================
 // NAVIGATION
